@@ -1,0 +1,13 @@
+Use font size 8 for 1X assets
+Use font size 16 for 2X assets.
+These fonts are not complete sets, and do not contain every special character. You may need to draw those yourself.
+
+BalaFont-PlntSpct.ttf is the font used for most Planet and Spectral cards (minus Soul)
+BalaFont-TarotFull.ttf is the font used for large-text Tarot cards (plus Soul)
+These two fonts have identical upper and lower cases.
+
+BalaFont-TarotHalf.ttf is the font used for cards like Hanged Man or Wheel of Fortune
+This font's upper case is the normal letters, and the lower case is the raised style used on Wheel of Fortune.
+Use the left parentheses to use the alternate C shape, as seen in Temperance.
+
+You can import these fonts into Aseprite by simply pressing T, clicking the font name box, then selecting one of these fonts in your filesystem.
