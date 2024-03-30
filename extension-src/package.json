@@ -1,0 +1,25 @@
+{
+    "name": "Balamod_Extension_Tools",
+    "displayName": "Balamod Extension Tools",
+    "description": "A pack of utilities and scripts for quickly creating Balatro assets.",
+    "version": "1.0",
+    "author": { "name": "jacobr1227", "url": "https://github.com/balamod/aseprite-balamod-extension"},
+    "contributors": [ ],
+    "publisher": "jacobr1227",
+    "license": "MIT",
+    "categories": [ "Scripts", "Keys", "Palettes" ],
+    "contributes": {
+      "scripts": [
+          { "path": "./plugin.lua" }
+      ],
+      "keys": [
+        { "id": "template-key", "path": "./template-key.aseprite-keys" }
+      ],
+      "palettes": [
+        { "id": "Planets", "path": "./Planet-CORE.gpl" },
+        { "id": "Seals", "path": "./Seal.gpl"},
+        { "id": "Spectrals", "path": "./Spectral.gpl"},
+        { "id": "Tarots", "path:": "./Tarot.gpl"}
+      ]
+    }
+  }
