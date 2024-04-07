@@ -12,13 +12,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Create directory for extension
         run: |
-          mkdir -p balamod_tools
-          cp -r extension-src/* balamod_tools
+          mkdir -p balamod_extension_tools
+          cp -r extension-src/* balamod_extension_tools
 
       - uses: vimtor/action-zip@v1.2
         with:
-          files: balamod_tools
-          dest: balamod.aseprite-extension
+          files: balamod_extension_tools
+          dest: balamod_extension_tools.aseprite-extension
 
       - uses: vimtor/action-zip@v1.2
         with:
@@ -39,8 +39,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_current_release.outputs.upload_url }}
-          asset_path: ./balamod.aseprite-extension
-          asset_name: balamod.aseprite-extension
+          asset_path: ./balamod_extension_tools.aseprite-extension
+          asset_name: balamod_extension_tools.aseprite-extension
           asset_content_type: application/zip
 
       - name: Upload Release Fonts
