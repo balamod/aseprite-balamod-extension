@@ -47,29 +47,33 @@ local function Show()
     local path = "./extensions/Balamod_Extension_Tools/Images/"
     local function SetDefaultTemplates()
         templates = {
-            { width = 71, height=95, name="Joker w/ letter borders", file=path .. "DefaultJoker+LetterBordering.png"},
-            { width = 71, height=95, name="Plain Joker", file=path .. "DefaultJoker.png"},
-            { width = 71, height=95, name="Joker Stamp (Color)", file=path .. "JokerStamp_color.png"},
-            { width = 71, height=95, name="Joker Stamp (Silhouette)", file=path .. "JokerStamp_shape.png"},
-            { width = 355, height=95, name="Basic Planet Cards", file=path .. "Planet-Range.png"},
-            { width = 71, height=95, name="Planet-1Card", file=path .. "Planet-Base1.png"},
-            { width = 71, height=95, name="Planet-2Card", file=path .. "Planet-Base2.png"},
-            { width = 71, height=95, name="Planet-3Card", file=path .. "Planet-Base3.png"},
-            { width = 71, height=95, name="Planet-4Card", file=path .. "Planet-Base4.png"},
-            { width = 71, height=95, name="Planet-5Card", file=path .. "Planet-Base5.png"},
-            { width = 71, height=95, name="Warped Planet Card", file=path .. "Planet-Warped.png"},
-            { width = 71, height=95, name="Basic Spectral Card", file=path .. "Spectral-Base.png"},
-            { width = 71, height=95, name="Special Spectral Card (Soul)", file=path .. "Spectral-Special.png"},
-            { width = 71, height=95, name="Tarot", file=path .. "Tarot-Base.png"},
-            { width = 71, height=95, name="Seal", file=path .. "Seal-Base.png"},
-            { width = 284, height=474, name="Booster Packs", file=path .. "booster_assets.png"},
-            { width = 71, height=95, name="Voucher (Dark)", file=path .. "Voucher_Dark.png"},
-            { width = 71, height=95, name="Voucher (Light)", file=path .. "Voucher_Light.png"},
-            { width = 34, height=34, name="Tag", file=path .. "Tag-Base.png"},
-            { width = 71, height=95, name="Blank Card", file=path .. "BlankCard-Base.png"},
-            { width = 34, height=34, name="Blind", file=path .. "Blind-Base.png"},
-            { width = 29, height=29, name="Chips", file=path .. "Chip-Base.png"},
-        };
+            { width = 71, height=95, name="Joker w/ letter borders", file="DefaultJoker+LetterBordering.png"},
+            { width = 71, height=95, name="Plain Joker", file="DefaultJoker.png"},
+            { width = 71, height=95, name="Joker Stamp (Color)", file="JokerStamp_color.png"},
+            { width = 71, height=95, name="Joker Stamp (Silhouette)", file="JokerStamp_shape.png"},
+            { width = 355, height=95, name="Basic Planet Cards", file="Planet-Range.png"},
+            { width = 71, height=95, name="Planet-1Card", file="Planet-Base1.png"},
+            { width = 71, height=95, name="Planet-2Card", file="Planet-Base2.png"},
+            { width = 71, height=95, name="Planet-3Card", file="Planet-Base3.png"},
+            { width = 71, height=95, name="Planet-4Card", file="Planet-Base4.png"},
+            { width = 71, height=95, name="Planet-5Card", file="Planet-Base5.png"},
+            { width = 71, height=95, name="Warped Planet Card", file="Planet-Warped.png"},
+            { width = 71, height=95, name="Basic Spectral Card", file="Spectral-Base.png"},
+            { width = 71, height=95, name="Special Spectral Card (Soul)", file="Spectral-Special.png"},
+            { width = 71, height=95, name="Tarot", file="Tarot-Base.png"},
+            { width = 71, height=95, name="Seal", file="Seal-Base.png"},
+            { width = 284, height=474, name="Booster Packs", file="booster_assets.png"},
+            { width = 71, height=95, name="Voucher (Dark)", file="Voucher_Dark.png"},
+            { width = 71, height=95, name="Voucher (Light)", file="Voucher_Light.png"},
+            { width = 34, height=34, name="Tag", file="Tag-Base.png"},
+            { width = 71, height=95, name="Blank Card", file="BlankCard-Base.png"},
+            { width = 34, height=34, name="Blind", file="Blind-Base.png"},
+            { width = 29, height=29, name="Chips", file="Chip-Base.png"},
+            { width = 71, height=95, name="Blank Card Back", file="BlankCard-Back.png"},
+        }
+        for i, v in ipairs(templates) do
+            templates[i].file = app.fs.joinPath(app.fs.userConfigPath, "extensions", "Balamod_Extension_Tools", "Images", v.file)
+        end
     end
 
     ----------------------------------------------------------------------------------------
