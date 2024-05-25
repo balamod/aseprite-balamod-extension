@@ -6,7 +6,14 @@ end
 local origImg = cel.image:clone()
 
 local r = app.sprite.bounds
-local file = "./extensions/Balamod_Extension_Tools/Images/BlindShineOverlay.aseprite"
+local file = app.fs.joinPath(
+    app.fs.userConfigPath,
+    "extensions",
+    "Balamod_Extension_Tools",
+    "Images",
+    "BlindShineOverlay.aseprite"
+)
+
 if r.width == 34 and r.height == 34 then
     r.width = r.width*21
     app.command.CanvasSize{ui=false, bounds=r}
