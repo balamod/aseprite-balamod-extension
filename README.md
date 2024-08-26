@@ -10,7 +10,9 @@ This extension package contains 3 tools, all listed in the File menu in Aseprite
 
 ## Palettes
 This package also includes some common palettes used for certain assets. To access them, if you are unfamiliar with Aseprite, press the middle button above the Palette window with the "Presets" tooltip, and search for "Balatro_" to find all of them. Select your preferred palette and press load to reset your base color palette to these presets. It should look like below, the black square with a missing corner.
+
 ![image](https://github.com/user-attachments/assets/6e5e74e8-4238-40ed-9cf4-418cdbcff804)
+
 In some versions of Aseprite, it may also [look like this.](https://imgur.com/nlLvOHv)
 ## Installation
 Download the fonts and the `aseprite-extension` file, and open `Edit > Preferences > Extension` in Aseprite, and install the package by clicking add extension and choosing the file.
