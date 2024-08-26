@@ -1,6 +1,6 @@
 -- MIT License
 
--- Copyright (c) 2021 David Fletcher
+-- Copyright (c) 2024 Balamod
 
 -- Permission is hereby granted, free of charge, to any person obtaining a copy
 -- of this software and associated documentation files (the "Software"), to deal
@@ -19,6 +19,11 @@
 -- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 -- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 -- SOFTWARE.
+
+function loadFile(data, ...)
+    local path = app.fs.joinPath(app.fs.userConfigPath, "extensions", "Balamod_Extension_Tools", ...)
+    return loadfile(path)(data)
+end
 
 function init(plugin)
     print("Aseprite is initializing Balamod Extension Tools")
@@ -39,22 +44,41 @@ function init(plugin)
         },
         utils = dofile(app.fs.joinPath(app.fs.userConfigPath, "extensions", "Balamod_Extension_Tools", "helpers.lua")),
     };
-
-    local function AddCommand(id, title, group, file, loc)
-        plugin:newCommand {
-            id=id,
-            title=title,
-            group=group,
-            onclick=function()
-                loadfile(app.fs.joinPath(app.fs.userConfigPath, "extensions", "Balamod_Extension_Tools", loc, file))(data);
-            end
-        }
-    end
-
-    AddCommand("Balamod_Extension_Templates","Templates","file_new","TemplateWindow.lua", "Dialogs");
-    AddCommand("Balamod_Extension_Tools_Blindify", "Blindify", "file_new", "Blindify.lua", "")
-    AddCommand("Balamod_Extension_Tools_Scaler", "1X to 2X scaler", "file_new", "1Xto2X.lua", "")
-
+    print("Registering Balamod Extension Tools menu group")
+    plugin:newMenuGroup{
+        id="balamod_extension_tools",
+        title="Balamod",
+        group="main_menu"
+    }
+    print("Registering Balamod Extension Tools commands")
+    print("Registering Balamod Extension Tools Templates command")
+    plugin:newCommand {
+        id="balamod_extension_tools_templates",
+        title="Templates",
+        group="balamod_extension_tools",
+        onclick=function()
+            loadFile(data, "Dialogs", "Templates.lua")
+        end
+    }
+    print("Registering Balamod Extension Tools Blindify command")
+    plugin:newCommand {
+        id="balamod_extension_tools_blindify",
+        title="Blindify",
+        group="balamod_extension_tools",
+        onclick=function()
+            loadFile(data, "Blindify.lua")
+        end
+    }
+    print("Registering Balamod Extension Tools 1X to 2X scaler command")
+    plugin:newCommand {
+        id="balamod_extension_tools_scaler",
+        title="1X to 2X scaler",
+        group="balamod_extension_tools",
+        onclick=function()
+            loadFile(data, "1Xto2X.lua")
+        end
+    }
+    print("Balamod extension tools installed.")
 end
 
 function exit(plugin)
