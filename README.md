@@ -8,6 +8,10 @@ This extension package contains 3 tools, all listed in the File menu in Aseprite
 
 `File > 1X to 2X scaler` will return a new image tab with exactly double scale of the currently viewed image. Use this for quickly generating 2X resolution assets (which are required for proper image loading).
 
+## Palettes
+This package also includes some common palettes used for certain assets. To access them, if you are unfamiliar with Aseprite, press the middle button above the Palette window with the "Presets" tooltip, and search for "Balatro_" to find all of them. Select your preferred palette and press load to reset your base color palette to these presets. It should look like below, the black square with a missing corner.
+![image](https://github.com/user-attachments/assets/6e5e74e8-4238-40ed-9cf4-418cdbcff804)
+In some versions of Aseprite, it may also [look like this.](https://imgur.com/nlLvOHv)
 ## Installation
 Download the fonts and the `aseprite-extension` file, and open `Edit > Preferences > Extension` in Aseprite, and install the package by clicking add extension and choosing the file.
 The fonts can be installed onto your system using the OS-specified manner, which will allow you to select them from a list, or you can keep them somewhere accessible and open them manually from the text menu in Aseprite.
