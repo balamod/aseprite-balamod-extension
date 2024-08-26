@@ -11,3 +11,5 @@ This font's upper case is the normal letters, and the lower case is the raised s
 Use the left parentheses to use the alternate C shape, as seen in Temperance.
 
 You can import these fonts into Aseprite by simply pressing T, clicking the font name box, then selecting one of these fonts in your filesystem.
+
+Alternatively, refer to your OS manufacturer's specification on adding new fonts to include these with your regular font selection for them to appear in Aseprite's standard font menu.
