@@ -1,5 +1,16 @@
 return {
-    ShowDetails = function(name, width, height, file)
+    ShowDetails = function(name, width, height, file, pluginData)
+        validate = function(dlg, pluginData)
+            if dlg.data.templateName == nil or dlg.data.templateName == "" then
+                pluginData.utils.create_error("Template name cannot be blank.", dlg, 0);
+                return false
+            end
+            if dlg.data.templateWidth <= 0 or dlg.data.templateHeight <= 0 then
+                pluginData.utils.create_error("Both template dimensions must be positive integers.", dlg, 0);
+                return false
+            end
+            return true
+        end
         ----------------------------------------------------------------------------------------
         -- Setup the dialog, and prepare a result object for the return.
         ----------------------------------------------------------------------------------------
@@ -17,10 +28,10 @@ return {
             onchange=function() data.template.name = dlg.data.templateName; end
         }:newrow();
 
-        dlg:entry{
+        dlg:number{
             id="templateWidth",
             label="Width",
-            decimals=integer,
+            decimals=0,
             text=tostring(data.template.width or 128),
             onchange=function() data.template.width = dlg.data.templateWidth; end
         }:newrow();
@@ -28,7 +39,7 @@ return {
         dlg:number{
             id="templateHeight",
             label="Height",
-            decimals=integer,
+            decimals=0,
             text=tostring(data.template.height or 128),
             onchange=function() data.template.height = dlg.data.templateHeight; end
         }:newrow();
@@ -36,9 +47,21 @@ return {
         dlg:file{
             id="templateFile",
             open = true,
-            entry = true,
-            filename = file,
-            filetypes={"ase", "aseprite", "png"}
+            load = true,
+            entry = false,
+            filename = data.template.file,
+            filetypes={"ase", "aseprite", "png"},
+            onchange=function()
+                data.template.file = dlg.data.templateFile;
+                local fileSprite = Sprite{fromFile=dlg.data.templateFile};
+                local w = fileSprite.width;
+                local h = fileSprite.height;
+                fileSprite:close();
+                data.template.width = w;
+                data.template.height = h;
+                dlg:modify{id="templateWidth", text=w}
+                dlg:modify{id="templateHeight", text=h}
+            end
         }:newrow();
 
 
@@ -49,8 +72,10 @@ return {
             id="saveChangesButton",
             text="Save Changes",
             onclick=function()
-                data.action = "update";
-                dlg:close();
+                if validate(dlg, pluginData) then
+                    data.action = "update";
+                    dlg:close();
+                end
             end
         }
 
@@ -58,13 +83,18 @@ return {
             id="addNewButton",
             text="Add As New",
             onclick=function()
-                -- If the name is the same as the initial, swap the action to an update.
-                if (initName == dlg.data.templateName) then
-                    data.action = "update";
-                else
-                    data.action = "add";
+                if validate(dlg, pluginData) then
+                    if (initName == dlg.data.templateName) then
+                        refresh = pluginData.utils.create_confirm("Warning: this will overwrite an existing template! Do you want to continue?");
+                        if refresh then
+                            data.action = "update";
+                            dlg:close();
+                        end
+                    else 
+                        data.action = "add";
+                        dlg:close();
+                    end
                 end
-                dlg:close();
             end
         }
 
@@ -72,8 +102,11 @@ return {
             id="deleteButton",
             text="Delete",
             onclick=function()
-                data.action = "delete";
-                dlg:close();
+                refresh = pluginData.utils.create_confirm("Delete template '"..dlg.data.templateName.."'?");
+                if refresh then
+                    data.action = "delete";
+                    dlg:close();
+                end
             end
         }
 

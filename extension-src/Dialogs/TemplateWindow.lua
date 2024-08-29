@@ -127,6 +127,7 @@ local function Show()
             template.height = newData.height;
             template.name = newData.name;
             template.file = newData.file;
+            dlg.data.templateDropdown = template.name;
         end
     end
 
@@ -216,17 +217,15 @@ local function Show()
         onclick=function()
             -- Hand of the current template data to a details popup for editing.
             local selected = TryGetTemplate(dlg.data.templateDropdown);
-            local result = detailsPopup.ShowDetails(selected.name, selected.width, selected.height, selected.file);
+            local result = detailsPopup.ShowDetails(selected.name, selected.width, selected.height, selected.file, pluginData);
 
             -- Act on the resulting action from the popup response.
             local refresh = (result.action ~= nil);
             if (result.action == "add") then
                 templates[templateCount+1] = result.template;
+                dlg.data.templateDropdown = result.template.name;
             elseif (result.action == "delete") then
-                refresh = pluginData.utils.create_confirm("Delete template '"..selected.name.."'?");
-                if (refresh == true) then
-                    RemoveTemplate(result.template.name);
-                end
+                RemoveTemplate(result.template.name);
             elseif (result.action == "update") then
                 UpdateTemplate(selected.name, result.template);
             end
