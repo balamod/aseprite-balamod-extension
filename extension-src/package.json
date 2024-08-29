@@ -2,7 +2,7 @@
   "name": "Balamod_Extension_Tools",
   "displayName": "Balamod Extension Tools",
   "description": "A pack of utilities and scripts for quickly creating Balatro assets.",
-  "version": "1.0",
+  "version": "1.3.0",
   "author": {
     "name": "jacobr1227",
     "url": "https://github.com/balamod/aseprite-balamod-extension"
