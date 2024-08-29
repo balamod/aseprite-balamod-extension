@@ -13,7 +13,6 @@ local file = app.fs.joinPath(
     "Images",
     "BlindShineOverlay.aseprite"
 )
-
 if r.width == 34 and r.height == 34 then
     r.width = r.width*21
     app.command.CanvasSize{ui=false, bounds=r}
