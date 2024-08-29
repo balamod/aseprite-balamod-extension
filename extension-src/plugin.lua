@@ -1,6 +1,6 @@
 -- MIT License
 
--- Copyright (c) 2021 David Fletcher
+-- Copyright (c) 2024 Balamod
 
 -- Permission is hereby granted, free of charge, to any person obtaining a copy
 -- of this software and associated documentation files (the "Software"), to deal
@@ -19,6 +19,11 @@
 -- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 -- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 -- SOFTWARE.
+
+function loadFile(data, ...)
+    local path = app.fs.joinPath(app.fs.userConfigPath, "extensions", "Balamod_Extension_Tools", ...)
+    return loadfile(path)(data)
+end
 
 function init(plugin)
     print("Aseprite is initializing Balamod Extension Tools")
@@ -39,7 +44,7 @@ function init(plugin)
         },
         utils = dofile(app.fs.joinPath(app.fs.userConfigPath, "extensions", "Balamod_Extension_Tools", "helpers.lua")),
     };
-
+    
     local function AddCommand(id, title, group, file, loc)
         plugin:newCommand {
             id=id,
@@ -54,7 +59,6 @@ function init(plugin)
     AddCommand("Balamod_Extension_Templates","Templates","file_new","TemplateWindow.lua", "Dialogs");
     AddCommand("Balamod_Extension_Tools_Blindify", "Blindify", "file_new", "Blindify.lua", "")
     AddCommand("Balamod_Extension_Tools_Scaler", "1X to 2X scaler", "file_new", "1Xto2X.lua", "")
-
 end
 
 function exit(plugin)

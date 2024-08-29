@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <keyboard version="1">
     <commands>
-        <key command="Balamod_Extension_Templates" shortcut="Ctrl+Alt+T" />
+        <key command="balamod_extension_tools_templates" shortcut="Ctrl+Alt+T" />
+        <key command="balamod_extension_tools_blindify" shortcut="Ctrl+Alt+B" />
+        <key command="balamod_extension_tools_scaler" shortcut="Ctrl+Alt+S" />
     </commands>
 </keyboard>
